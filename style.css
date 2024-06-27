@@ -1,101 +1,88 @@
-*{
+* {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
 }
 
-.container{
+.container {
     width: 100%;
     height: 100vh;
-    background: #e3f9ff;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.calculator{
-    background: #3a4452;
+.calculator {
     padding: 20px;
     border-radius: 10px;
 }
 
-.calculator form input{
+.calculator form input {
     border: 0;
     outline: 0;
     width: 60px;
     height: 60px;
     border-radius: 10px;
-    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1),5px 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
     background: transparent;
     font-size: 20px;
-    color: #ffff;
+    color: #fff;
     cursor: pointer;
     margin: 10px;
 }
 
-.theme-toggler{
-    position: absolute;
-    top: 30px;
-    right: 30px;
-    color: #fff;
-    cursor: pointer;
-    z-index: 1;
-}
-
-.theme-toggler.active{
-    color: #333;
-}
-
-.theme-toggler.active::before{
-    background-color:#fff;
-
-}
-
-.theme-toggler::before {
-    content:'';
-    height: 30px;
-    width: 30px;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    border-radius: 50%;
-    background-color: #333;
-    z-index: -1;
-
-}
-#display{
-    margin: 0 10px;
-    height: 150px;
-    width: auto;
-    max-width: 270px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    font-size: 30px;
-    margin-bottom: 20px;
-}
-
-
-
-form .display{
+form .display {
     display: flex;
     justify-content: flex-end;
     margin: 20px 0;
 }
 
-form .display input{
+form .display input {
     text-align: right;
     flex: 1;
     font-size: 45px;
     box-shadow: none;
 }
 
-form input.equal{
+form input.equal {
     width: 60px;
 }
 
-form input.operator{
+form input.operator {
     color: #33ffd8;
+}
 
+/* Light Theme */
+body.light .container {
+    background: #e3f9ff;
+}
+
+body.light .calculator {
+    background: #ffffff;
+}
+
+body.light .calculator form input {
+    color: #000;
+}
+
+body.light form input.operator {
+    color: #ff33a1;
+}
+
+/* Dark Theme */
+body.dark .container {
+    background: #1a1a1a;
+}
+
+body.dark .calculator {
+    background: #3a4452;
+}
+
+body.dark .calculator form input {
+    color: #fff;
+}
+
+body.dark form input.operator {
+    color: #33ffd8;
 }

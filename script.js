@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const textField = document.querySelector("input[name='display']");
     const historyBox = document.getElementById('history-box');
     const historyList = document.getElementById('history-list');
+    let resultDisplayed = false;
     
     // Add event listener for theme toggle button
     toggleButton.addEventListener('click', () => {
@@ -31,13 +32,19 @@ document.addEventListener('DOMContentLoaded', () => {
             let result = execute(textField.value);
             records.push(`${textField.value} = ${result}`);
             textField.value = result;
+            resultDisplayed = true;
         } else if (value === 'HIS') {
             showHistory();
         } else if (value === 'AC') {
             textField.value = '';
+            resultDisplayed = false;
         } else if (value === 'DE') {
             textField.value = textField.value.toString().slice(0, -1);
         } else {
+            if (resultDisplayed) {
+                textField.value = '';
+                resultDisplayed = false;
+            }
             textField.value += value;
         }
     }

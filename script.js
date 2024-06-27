@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const toggleButton = document.getElementById('theme-toggle');
-    const button = document.querySelectorAll("input[type='button']");
+    const buttons = document.querySelectorAll("input[type='button']");
     const records = [];
     const textField = document.querySelector("input[name='display']");
     
@@ -19,22 +19,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Add event listeners for calculator buttons
-    button.forEach((e) => {
-        e.addEventListener('click', f);
+    buttons.forEach((e) => {
+        e.addEventListener('click', handleButtonClick);
     });
 
-    function f(buttons) {
-        if (buttons.target.value == '=') {
+    function handleButtonClick(event) {
+        const value = event.target.value;
+        if (value === '=') {
             let result = execute(textField.value);
+            records.push(`${textField.value} = ${result}`);
             textField.value = result;
-            let string = textField.value;
-            records.push(string);
-        } else if (buttons.target.value == 'HIS') {
-            let result = history();
-            textField.value = result;
-            let string = textField.value;
+        } else if (value === 'HIS') {
+            openHistoryWindow();
+        } else if (value === 'AC') {
+            textField.value = '';
+        } else if (value === 'DE') {
+            textField.value = textField.value.toString().slice(0, -1);
         } else {
-            textField.value += buttons.target.value;
+            textField.value += value;
         }
     }
 
@@ -47,15 +49,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function history() {
-        try {
-            if (records.length == 0) {
-                return 'EMPTY';
-            } else {
-                return records.pop();
-            }
-        } catch (error) {
-            return 'ERROR';
+    function openHistoryWindow() {
+        const historyWindow = window.open("", "History", "width=400,height=600");
+        if (historyWindow) {
+            historyWindow.document.write("<html><head><title>Calculation History</title></head><body>");
+            historyWindow.document.write("<h1>Calculation History</h1><ul>");
+            records.forEach(record => {
+                historyWindow.document.write(`<li>${record}</li>`);
+            });
+            historyWindow.document.write("</ul></body></html>");
+        } else {
+            alert("Pop-up blocker is enabled. Please allow pop-ups for this site to view the history.");
         }
     }
 });

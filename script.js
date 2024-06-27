@@ -7,13 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const historyList = document.getElementById('history-list');
     let resultDisplayed = false;
     
-    // Add event listener for theme toggle button
+    //event listener for theme toggle button
     toggleButton.addEventListener('click', () => {
         document.body.classList.toggle('dark');
         document.body.classList.toggle('light');
     });
 
-    // Set the initial theme based on user preference or default to light
+    // initial theme based on user or default to light
     const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     if (userPrefersDark) {
         document.body.classList.add('dark');
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('light');
     }
 
-    // Add event listeners for calculator buttons
+    // for calculator buttons
     buttons.forEach((e) => {
         e.addEventListener('click', handleButtonClick);
     });
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showHistory() {
-        historyList.innerHTML = ''; // Clear the previous history
+        historyList.innerHTML = ''; 
         if (records.length === 0) {
             historyList.innerHTML = '<li>EMPTY</li>';
         } else {
@@ -69,6 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 historyList.appendChild(listItem);
             });
         }
-        historyBox.style.display = 'block'; // Show the history box
+        historyBox.style.display = 'block'; //  history box
     }
 });

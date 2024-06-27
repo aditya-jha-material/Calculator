@@ -34,6 +34,39 @@
     margin: 10px;
 }
 
+.theme-toggler{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.theme-toggler.active{
+    color: #333;
+}
+
+.theme-toggler.active::before{
+    background-color:#fff;
+
+}
+
+.theme-toggler::before {
+    content:'';
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    background-color: #333;
+    z-index: -1;
+
+}
+
+
+
 form .display{
     display: flex;
     justify-content: flex-end;

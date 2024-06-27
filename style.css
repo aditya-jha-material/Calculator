@@ -11,6 +11,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 20px;
 }
 
 .calculator {
@@ -53,6 +54,16 @@ form input.operator {
     color: #33ffd8;
 }
 
+.history-box {
+    display: none;
+    background: #f1f1f1;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    height: 400px;
+    overflow-y: auto;
+}
+
 /* Light Theme */
 body.light .container {
     background: #e3f9ff;
@@ -70,6 +81,11 @@ body.light form input.operator {
     color: #ff33a1;
 }
 
+body.light .history-box {
+    background: #ffffff;
+    color: #000;
+}
+
 /* Dark Theme */
 body.dark .container {
     background: #1a1a1a;
@@ -85,4 +101,9 @@ body.dark .calculator form input {
 
 body.dark form input.operator {
     color: #33ffd8;
+}
+
+body.dark .history-box {
+    background: #333;
+    color: #fff;
 }

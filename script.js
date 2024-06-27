@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const buttons = document.querySelectorAll("input[type='button']");
     const records = [];
     const textField = document.querySelector("input[name='display']");
+    const historyBox = document.getElementById('history-box');
+    const historyList = document.getElementById('history-list');
     
     // Add event listener for theme toggle button
     toggleButton.addEventListener('click', () => {
@@ -30,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
             records.push(`${textField.value} = ${result}`);
             textField.value = result;
         } else if (value === 'HIS') {
-            openHistoryWindow();
+            showHistory();
         } else if (value === 'AC') {
             textField.value = '';
         } else if (value === 'DE') {
@@ -49,17 +51,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function openHistoryWindow() {
-        const historyWindow = window.open("", "History", "width=400,height=600");
-        if (historyWindow) {
-            historyWindow.document.write("<html><head><title>Calculation History</title></head><body>");
-            historyWindow.document.write("<h1>Calculation History</h1><ul>");
-            records.forEach(record => {
-                historyWindow.document.write(`<li>${record}</li>`);
-            });
-            historyWindow.document.write("</ul></body></html>");
+    function showHistory() {
+        historyList.innerHTML = ''; // Clear the previous history
+        if (records.length === 0) {
+            historyList.innerHTML = '<li>EMPTY</li>';
         } else {
-            alert("Pop-up blocker is enabled. Please allow pop-ups for this site to view the history.");
+            records.forEach(record => {
+                const listItem = document.createElement('li');
+                listItem.textContent = record;
+                historyList.appendChild(listItem);
+            });
         }
+        historyBox.style.display = 'block'; // Show the history box
     }
 });

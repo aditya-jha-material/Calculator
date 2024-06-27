@@ -1,24 +1,24 @@
-let button = document.querySelectorAll("button");
+let button = document.querySelectorAll("input[type='button']");
 let records = [];
-let textField = document.querySelector('#textField');  
+let textField = document.querySelector("input[name='display']");
 button.forEach((e) => {
-    e.addEventListener('click', f);         
+    e.addEventListener('click', f);
 })
 
-function f(buttons){
-    if(buttons.target.innerHTML == '='){
+function f(buttons) {
+    if (buttons.target.value == '=') {
         let result = execute(textField.value);
         textField.value = result;
         let string = result;  
         records.push(string);
-    } else if(buttons.target.innerHTML == 'HIS'){
+    } else if (buttons.target.value == 'HIS') {
         let result = history();
         textField.value = result;
         let string = result;  
     }
 }
 
-function execute(expression){
+function execute(expression) {
     try {
         return eval(expression);
     } catch (error) {
@@ -27,7 +27,7 @@ function execute(expression){
     }
 }
 
-function history(){
+function history() {
     try {
         if (records.length == 0) {
             return 'EMPTY';

@@ -6,6 +6,7 @@ button.forEach((e) => {
 })
 
 function f(buttons) {
+    buttonAnimation(buttons.target.value);
     if (buttons.target.value == '=') {
         let result = execute(textField.value);
         textField.value = result;
@@ -15,6 +16,28 @@ function f(buttons) {
         let result = history();
         textField.value = result;
         let string = result;  
+    }
+}
+
+document.addEventListener('keydown', g);
+
+function g(event){
+    buttonAnimation(event.key);
+    const arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '/', '*'];
+    if(event.key === 'Enter'){
+        let result = execute(textField.value);
+        textField.value = result;
+        let string = result;  
+        records.push(string);
+    }
+    else if(event.key === 'Backspace'){
+        textField.value = textField.value.slice(0, -1);
+    }
+    else if(event.key === 'C' || event.key === 'c' || event.key === 'Delete'){
+        textField.value = '';
+    }
+    else if(arr.includes(event.key)){
+        textField.value += event.key;
     }
 }
 
@@ -37,4 +60,15 @@ function history() {
     } catch (error) {
         return 'ERROR';
     }
+}
+
+function buttonAnimation(key) {
+    button.forEach(function(buttons) {
+        if (buttons.value === key) {
+            buttons.classList.add("pressed");
+            setTimeout(function() {
+                buttons.classList.remove("pressed");
+            }, 100);
+        }
+    });
 }

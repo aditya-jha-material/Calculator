@@ -18,6 +18,20 @@
 .calculator {
     padding: 20px;
     border-radius: 10px;
+    box-sizing: border-box;
+    border-top-left-radius: 100% 30px;
+    border-top-right-radius: 100% 30px;
+    border-bottom-left-radius: 100% 60px;
+    border-bottom-right-radius: 100% 60px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, .7),
+                0 0 20px 0 rgba(0, 0, 0, 0.5),
+                0 0 25px 0 rgba(0, 0, 0, 0.3),
+                10px 0 4px 10px rgba(0, 0, 0, 0.3),
+                inset 0 0 3px 0 rgba(0, 0, 0, 0.7),
+                inset 0 0 10px 0 rgba(0, 0, 0, 0.5),
+                inset 0 -25px 5px 0 rgba(0, 0, 0, 0.2),
+                inset 0 -5px 10px 0 rgba(255, 255, 255, 0.3);
+    user-select: none;
 }
 
 .calculator form input {
@@ -38,7 +52,13 @@ form .display {
     display: flex;
     justify-content: flex-end;
     margin: 20px 0;
-    background-color: #33ffd8;
+    background-image: linear-gradient(-155deg, #44443a 0%, #656f66 100%);
+    box-shadow: 0 -4px 4px -3px rgba(255, 255, 255, 0.3),
+                5px 0 3px -5px rgba(255, 255, 255, 0.8),
+                0 5px 5px -3px rgba(0, 0, 0, 0.5),
+                -3px 0 3px -1px rgba(0, 0, 0, 0.8),
+                inset 0 -5px 3px -3px rgba(0, 0, 0, 0.5),
+                inset 5px 0 5px -2px rgba(0, 0, 0, 0.8);
 }
 
 form .display input {
@@ -52,9 +72,6 @@ form input.equal {
     width: 60px;
 }
 
-form input.operator {
-    color: #33ffd8;
-}
 
 .history-box {
     display: none;
@@ -68,19 +85,26 @@ form input.operator {
 
 /* Light Theme */
 body.light .container {
-    background: #e3f9ff;
+    background-image: linear-gradient(to top, #E7D4B5 0%, #B6C7AA 100%);
 }
 
 body.light .calculator {
-    background: #ffffff;
+    background: radial-gradient(ellipse farthest-corner at 20% 65%, #5e6470, #161213);
 }
 
-body.light .calculator form input {
-    color: #000;
-}
-
-body.light form input.operator {
-    color: #ff33a1;
+body.light .calculator form input.num{
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: linear-gradient(25deg, #525a65, #3b424c);
+    color: rgba(255, 255, 255, 0.8);
+    box-shadow: inset 2px -1px 1px 0 rgba(255, 255, 255, 0.2),
+                inset -3px 2px 5px 0 rgba(0, 0, 0, 0.2),
+                4px 1px 1px 0 rgba(0, 0, 0, 0.5),
+                -1px -3px 1px 0 rgba(0, 0, 0, 0.5),
+                4px -3px 1px 0 rgba(0, 0, 0, 0.5),
+                -1px -1px 5px 0 rgba(0, 0, 0, 0.5);
 }
 
 body.light .history-box {
@@ -90,23 +114,51 @@ body.light .history-box {
 
 /* Dark Theme */
 body.dark .container {
-    background: #1a1a1a;
+    background-image: linear-gradient(to top, beige 0%, #252525 100%);
 }
 
 body.dark .calculator {
-    background: #3a4452;
+    background: radial-gradient(ellipse farthest-corner at 20% 65%, #5e6470, #161213);
 }
 
-body.dark .calculator form input {
-    color: #fff;
+body.dark .calculator form input.num{
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: linear-gradient(25deg, #525a65, #3b424c);
+    color: rgba(255, 255, 255, 0.8);
+    box-shadow: inset 2px -1px 1px 0 rgba(255, 255, 255, 0.2),
+                inset -3px 2px 5px 0 rgba(0, 0, 0, 0.2),
+                4px 1px 1px 0 rgba(0, 0, 0, 0.5),
+                -1px -3px 1px 0 rgba(0, 0, 0, 0.5),
+                4px -3px 1px 0 rgba(0, 0, 0, 0.5),
+                -1px -1px 5px 0 rgba(0, 0, 0, 0.5);
 }
 
 body.dark form .display{
-    background-color: green;
+    background-image: linear-gradient(-155deg, #44443a 0%, #656f66 100%);
+    box-shadow: 0 -4px 4px -3px rgba(255, 255, 255, 0.3),
+                5px 0 3px -5px rgba(255, 255, 255, 0.8),
+                0 5px 5px -3px rgba(0, 0, 0, 0.5),
+                -3px 0 3px -1px rgba(0, 0, 0, 0.8),
+                inset 0 -5px 3px -3px rgba(0, 0, 0, 0.5),
+                inset 5px 0 5px -2px rgba(0, 0, 0, 0.8);
 }
 
-body.dark form input.operator {
-    color: #33ffd8;
+form input.operator {
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: linear-gradient(25deg, #525a65, #3b424c);
+    color: rgba(255, 255, 255, 0.8);
+    box-shadow: inset 2px -1px 1px 0 rgba(255, 255, 255, 0.2),
+                inset -3px 2px 5px 0 rgba(0, 0, 0, 0.2),
+                4px 1px 1px 0 rgba(0, 0, 0, 0.5),
+                -1px -3px 1px 0 rgba(0, 0, 0, 0.5),
+                4px -3px 1px 0 rgba(0, 0, 0, 0.5),
+                -1px -1px 5px 0 rgba(0, 0, 0, 0.5);
 }
 
 body.dark .history-box {

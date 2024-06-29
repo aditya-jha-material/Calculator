@@ -38,7 +38,7 @@ form .display {
     display: flex;
     justify-content: flex-end;
     margin: 20px 0;
-    background-color: green;
+    background-color: #33ffd8;
 }
 
 form .display input {
@@ -101,6 +101,10 @@ body.dark .calculator form input {
     color: #fff;
 }
 
+body.dark form .display{
+    background-color: green;
+}
+
 body.dark form input.operator {
     color: #33ffd8;
 }
@@ -108,4 +112,9 @@ body.dark form input.operator {
 body.dark .history-box {
     background: #333;
     color: #fff;
+}
+
+.pressed{
+    box-shadow: 0 3px 4px 0 #DBEDF3;
+    opacity: 0.5;
 }
